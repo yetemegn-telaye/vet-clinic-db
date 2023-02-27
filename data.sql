@@ -14,3 +14,34 @@ INSERT INTO animals (ID,name,date_of_birth,escape_attempts,neutered,weight_kg) V
 INSERT INTO animals (ID,name,date_of_birth,escape_attempts,neutered,weight_kg) VALUES (9,'Boarmon','Jun 07, 2005',7,true,20.4);
 INSERT INTO animals (ID,name,date_of_birth,escape_attempts,neutered,weight_kg) VALUES (10,'Blossom','Oct 13, 1998',3,true,17);
 INSERT INTO animals (ID,name,date_of_birth,escape_attempts,neutered,weight_kg) VALUES (11,'Ditto','May 14, 2022',4,true,22);
+
+
+/*INSERT DATA INTO OWNERS TABLE*/
+INSERT INTO owners (full_name,age) VALUES('Sam Smith',34);
+INSERT INTO owners (full_name,age) VALUES('Jennifer Orwell',19);
+INSERT INTO owners (full_name,age) VALUES('Bob',45);
+INSERT INTO owners (full_name,age) VALUES('Melody Pond',77);
+INSERT INTO owners (full_name,age) VALUES('Dean Winchester',14);
+INSERT INTO owners (full_name,age) VALUES('Jodie Whittaker',38);
+
+
+/*INSERT DATA INTO SPECIES TABLE*/
+INSERT INTO species (name) VALUES ('Pokemon');
+INSERT INTO species (name) VALUES ('Digimon');
+
+
+/**/
+UPDATE animals SET species_ID=1 WHERE name LIKE '%mon';
+UPDATE animals SET species_ID=2 WHERE name NOT LIKE '%mon';
+
+/**/
+UPDATE animals SET owner_id=3 WHERE ID=1;
+UPDATE animals SET owner_id=4 WHERE ID=2; 
+UPDATE animals SET owner_id=4 WHERE ID=5;
+UPDATE animals SET owner_id=5 WHERE ID=3;
+UPDATE animals SET owner_id=5 WHERE ID=7;
+UPDATE animals SET owner_id=6 WHERE ID=9;
+UPDATE animals SET owner_id=6 WHERE ID=10;
+UPDATE animals SET owner_id=6 WHERE ID=6;
+UPDATE animals SET owner_id=7 WHERE ID=8;
+UPDATE animals SET owner_id=7 WHERE ID=4;
