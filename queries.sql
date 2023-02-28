@@ -113,3 +113,25 @@ SELECT animals.name, owners.full_name, animals.escape_attempts FROM animals LEFT
  
 SELECT owners.full_name, COUNT(*) AS number_of_animals FROM animals JOIN owners ON animals.owner_ID=owners.id GROUP BY owners.full_name;
 SELECT owners.full_name, COUNT(*) AS number_of_animals FROM animals JOIN owners ON animals.owner_ID=owners.id WHERE full_name='Melody Pond' GROUP BY owners.full_name;
+
+
+
+/*queries*/
+SELECT animals.name,visits.date_of_visits FROM visits JOIN animals ON animals.id=visits.animal_id WHERE vet_id=1 ORDER BY date_of_visits DESC LIMIT 1;
+
+SELECT DISTINCT COUNT(animal_id) FROM visits WHERE vet_id=3;
+
+SELECT vets.name, species.name FROM vets LEFT JOIN specializations ON vets.id=specializations.vet_id LEFT JOIN species ON specializations.species_id = species.id ORDER BY vets;
+
+SELECT animals.name FROM visits JOIN animals ON animals.id=animal_id WHERE vet_id=3 AND date_of_visits BETWEEN '2020-04-01' AND '2020-08-30';
+
+SELECT MAX(visit_count),animals.name FROM (SELECT animal_id, COUNT(animal_id) AS visit_count FROM visits GROUP BY animal_id) AS countV JOIN animals ON animal_id=animals.id WHERE visit_count=4 GROUP BY animals.name;
+
+SELECT animals.name,MIN(date_of_visits) FROM visits JOIN animals ON animals.id=visits.animal_id WHERE vet_id=2 GROUP BY animals.name;
+
+SELECT animals.name, vets.name, date_of_visits FROM visits JOIN animals ON animals.id=animal_id JOIN vets ON vet_id=vets.id ORDER BY date_of_visits DESC;
+
+SELECT COUNT(*) FROM visits WHERE visits.vet_id NOT IN (SELECT specializations.vet_id FROM specializations WHERE specializations.species_id=(SELECT animals.species_ID FROM animals WHERE animals.id=visits.animal_id));
+
+SELECT COUNT(*),animals.species_id FROM visits JOIN animals ON animals.id=visits.animal_id WHERE vet_id=2 GROUP BY species_id;
+
